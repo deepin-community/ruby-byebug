@@ -1,0 +1,150 @@
+ruby-byebug (11.1.3-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/control (Standards-Version): Bump to 4.6.0.
+    (Depends): Drop ruby-interpreter and leave ruby for the script.
+    Add ${ruby:Depends}.
+  * d/copyright: Add Upstream-Contact field.
+  * d/upstream/metadata: Add YAML prefix and Archive field.
+  * d/patches/996145-fix-tests-with-ruby3.patch: Add patch.
+    - Make sure that exe/byebug is run via RbConfig.ruby during tests to not
+      rely on /usr/bin/env which will always lead to ruby2.7 (closes: #996145).
+  * d/patches/series: Enable new patch.
+
+ -- Daniel Leidert <dleidert@debian.org>  Mon, 01 Nov 2021 12:54:44 +0100
+
+ruby-byebug (11.1.3-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Lucas Kanashiro ]
+  * New upstream version 11.1.3
+  * Drop all patches, applied by upstream
+  * Bump debhelper compatibility level to 13
+  * Declare compliance with Debian Policy 4.5.0
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Sat, 06 Jun 2020 19:47:28 -0300
+
+ruby-byebug (11.1.1-2) unstable; urgency=medium
+
+  * Team upload
+  * Fix crash on TAB under ruby2.7
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 05 Apr 2020 10:03:21 -0300
+
+ruby-byebug (11.1.1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 11.1.1
+  * Add patches for the test suite on ruby2.7
+  * Skip test/commands/finish_test.rb; real solution being worked on upstream
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 04 Feb 2020 18:20:51 +0100
+
+ruby-byebug (11.0.1-5) unstable; urgency=medium
+
+  * Team upload.
+  * add Breaks: against ruby-pry-byebug << 3.7.0-1~ (Closes: #948455)
+
+ -- Antonio Terceiro <terceiro@debian.org>  Thu, 09 Jan 2020 13:46:57 -0300
+
+ruby-byebug (11.0.1-4) unstable; urgency=medium
+
+  * Team upload.
+  * Skip test/remote_shortcut_test.rb on all architectures
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sun, 15 Dec 2019 08:32:55 -0300
+
+ruby-byebug (11.0.1-3) unstable; urgency=medium
+
+  * Team upload
+  * debian/clean: list files generated during build
+  * debian/ruby-tests.rb: list tests to exclude under debian/tests/exclude/
+  * debian/ruby-tests.rb: support arch-specific test exclude lists
+  * armel: skip test/runner_without_target_program_test.rb
+  * Skip test/remote_debugging_test.rb on all architectures
+
+ -- Antonio Terceiro <terceiro@debian.org>  Sat, 14 Dec 2019 22:32:01 -0300
+
+ruby-byebug (11.0.1-2) unstable; urgency=medium
+
+  * Team upload
+  * debian/ruby-tests.rb: run tests during build
+  * Add build dependencies on ruby-bundler, ruby-simplecov and pry
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 26 Nov 2019 21:07:52 -0300
+
+ruby-byebug (11.0.1-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Utkarsh Gupta ]
+  * Add salsa-ci.yml
+
+  [ Antonio Terceiro ]
+  * debian/watch: point at github repository to also get tests
+  * debian/copyright: point at github repository
+  * New upstream version 11.0.1
+  * Update packaging with a new run of dh-make-ruby
+    - Bump debhelper compat level to 12 and switch to using debhelper-compat
+    - Bump Standards-Version to 4.4.1; no changes needed
+    - use https:// in Homepage:
+    - add Rules-Requires-Root: no
+    - debian/rules: drop commented boilerplate
+    - debian/rules: switch to Rubygems installation layout
+    - debian/watch: point to gemwatch.debian.net
+
+ -- Antonio Terceiro <terceiro@debian.org>  Tue, 26 Nov 2019 09:05:51 -0300
+
+ruby-byebug (10.0.2-1) unstable; urgency=medium
+
+  * New upstream version 10.0.2
+  * Declare compliance with Debian Policy 4.1.4
+  * Update years of packaging copyright
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Wed, 11 Apr 2018 16:13:39 -0300
+
+ruby-byebug (10.0.1-1) unstable; urgency=medium
+
+  * New upstream version 10.0.1
+  * Bump debhelper compatibility level to 11
+  * Update VCS urls to point to salsa
+  * debian/watch: use https:// instead of http://
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Mon, 26 Mar 2018 13:45:03 -0300
+
+ruby-byebug (10.0.0-1) unstable; urgency=medium
+
+  * New upstream version 10.0.0
+  * Declare compliance with Debian Policy 4.1.3
+  * Update short description
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Wed, 28 Feb 2018 15:45:01 -0300
+
+ruby-byebug (9.1.0-1) unstable; urgency=medium
+
+  [ Cédric Boutillier ]
+  * Bump debhelper compatibility level to 9
+  * Use https:// in Vcs-* fields
+  * Use https:// in Vcs-* fields
+  * Bump Standards-Version to 3.9.7 (no changes needed)
+
+  [ Lucas Kanashiro ]
+  * New upstream version 9.1.0
+  * Remove debian/test directory, contains only unused example files
+  * debian/rules: check dependencies during build
+  * Update Debian packaging copyright
+  * debian/copyright: use https:// instead of http:// in Format field
+  * Bump debhelper compatibility level to 10
+  * Declare compliance with Debian Policy 4.1.0
+  * Add myself to Uploaders list
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Fri, 01 Sep 2017 17:21:10 -0300
+
+ruby-byebug (5.0.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #794746)
+
+ -- Pirate Praveen <praveen@debian.org>  Thu, 06 Aug 2015 15:20:36 +0530

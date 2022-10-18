@@ -1,0 +1,31 @@
+From: Daniel Leidert <dleidert@debian.org>
+Date: Mon, 1 Nov 2021 12:48:58 +0100
+Subject: Run exe/byebug with correct ruby version during tests
+
+When just running exe/byebug by setting the Gem load paths to a ruby 3.0
+environment, the script itself will still be run by ruby 2 and thus leading to
+
+> Ignoring byebug-11.1.3 because its extensions are not built. Try: gem pristine byebug --version 11.1.3
+
+Debian-Bug: https://bugs.debian.org/996145
+Forwarded: no
+---
+ test/support/utils.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/support/utils.rb b/test/support/utils.rb
+index a8e74f3..043d1f0 100644
+--- a/test/support/utils.rb
++++ b/test/support/utils.rb
+@@ -273,9 +273,9 @@ module Byebug
+     #
+     def binstub
+       cmd = "exe/byebug"
+-      return [cmd] unless Gem.win_platform?
++      #return [cmd] unless Gem.win_platform?
+ 
+-      [RbConfig.ruby, cmd]
++      return [RbConfig.ruby, cmd]
+     end
+   end
+ end

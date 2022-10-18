@@ -1,0 +1,37 @@
+Source: ruby-byebug
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Pirate Praveen <praveen@debian.org>,
+           Lucas Kanashiro <kanashiro@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               gem2deb,
+               pry,
+               ruby-bundler,
+               ruby-columnize,
+               ruby-simplecov
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-byebug.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-byebug
+Homepage: https://github.com/deivid-rodriguez/byebug
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-byebug
+Architecture: any
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby,
+         ruby-columnize,
+         ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends}
+Breaks: ruby-pry-byebug (<< 3.7.0-1~)
+Multi-Arch: same
+Description: Ruby fast debugger - base + CLI
+ Byebug is a Ruby 2 debugger. It's implemented using the
+ Ruby 2 TracePoint C API for execution control and the Debug Inspector C API
+ for call stack navigation.  The core component provides support that
+ front-ends can build on. It provides breakpoint handling and bindings for
+ stack frames among other things and it comes with an easy to use command
+ line interface.

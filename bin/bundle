@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "rubygems"
+
+m = Module.new do
+  extend self
+
+  def gemfile
+    File.expand_path("../Gemfile", __dir__)
+  end
+
+  def lockfile
+    "#{gemfile}.lock"
+  end
+
+  def lockfile_version
+    return unless File.file?(lockfile)
+
+    lockfile_contents = File.read(lockfile)
+
+    regexp = /\n\nBUNDLED WITH\n\s{2,}(#{Gem::Version::VERSION_PATTERN})\n/
+
+    regexp.match(lockfile_contents)[1]
+  end
+
+  def bundler_version
+    @bundler_version ||= lockfile_version
+  end
+
+  def load_bundler!
+    ENV["BUNDLE_GEMFILE"] ||= gemfile
+
+    activate_bundler(bundler_version)
+  end
+
+  def activate_bundler(bundler_version)
+    gem "bundler", bundler_version
+  end
+end
+
+m.load_bundler!

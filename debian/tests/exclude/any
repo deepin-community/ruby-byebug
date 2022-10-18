@@ -1,0 +1,4 @@
+test/minitest_runner_test.rb
+test/remote_debugging_test.rb
+test/remote_shortcut_test.rb
+test/commands/finish_test.rb
